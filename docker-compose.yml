@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  localstack:
+    image: localstack:latest
+    deploy:
+      mode: replicated
+      replicas: 1
+    env_file:
+      - localstack.env
+    networks:
+      main:
+        aliases:
+          - localstack
+    # healtcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost"]
+    #   interval: 1m30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 40s
+
+
+networks:
+  main:
